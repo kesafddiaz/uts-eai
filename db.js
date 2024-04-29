@@ -1,13 +1,17 @@
 const mysql = require('mysql2');
+const dotenv = require('dotenv');
+
+// dotenv setup
+dotenv.config();
 
 // mysql setup
 const conn = mysql.createPool({
     connectionLimit: 10,
-    host: 'mysql-2798d337-student-ded3.d.aivencloud.com',
-    user: 'avnadmin',
-    password: 'AVNS_We6gfnhE5bvYwk_cHg2',
-    port: 17428,
-    database: 'UTS-EAI'
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    port: process.env.PORT,
+    database: process.env.DATABASE
   });
   
   conn.getConnection(function(err) {
